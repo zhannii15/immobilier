@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{path('home')}}"><img src="https://cdn-icons-png.flaticon.com/512/182/182663.png?w=740&t=st=1677235062~exp=1677235662~hmac=7d6f17dce524cdb63a61a0add3553a165dfcf2ce0f6081869c99c2212d894c07" alt="zhaImmo" width="50px">  zha</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('appartement')}}">App</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">House</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('energie')}}">Classe Energétique</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('charges')}}">Charges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('espace')}}">EspaceVie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('surfacepiece')}}">SurfacePiece</a>
+                </li>
+            </ul>  
+            <form class="d-flex m-2">
+                {% if not app.user %}
+                    <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+                {% else %}
+                    <a class="nav-link" href="{{path('app_logout')}}">Déconnexion</a>
+                {% endif %}   
+            </form>   
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appartements {% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center">Les appartements</h1>
+
+	{% for appart in appartement %}
+
+		<div class="card mb-3">
+			<h3 class="card-header">{{appart.Type}}</h3>
+			<div class="card-body">
+				<h6 class="card-subtitle text-muted">Nouveauté
+					{{appart.RefAgence.RefAgence}}</h6>
+			</div>
+			<div>
+				<span style="background-image: url({{ asset(('image1'~appart.pictures.lien_url)) }})"></span>
+            </div>
+			<p>{{appart.RefBien}}</p>
+			<div class="card-body">
+				<p class="card-text">{{ appart.Description}}</p>
+
+				<p>{{appart.Ville}}</p>
+				<p>{{appart.NbrePieces}}</p>
+				<p>{{appart.charges.LoyerMensuel}}{{'€'}}</p>
+                <p>{{appart.charges.GarantieLoyer}}{{'€'}}</p>
+                <p>{{appart.charges.ProvisionCharge}}{{'€'}}</p>
+                <p>{{appart.charges.EtatDesLieux}}{{'€'}}</p>
+                {# <p>{{appart.surface.Nom}}</p>
+                <p>{{appart.Ville}}</p>
+                <p>{{appart.Ville}}</p>
+                <p>{{appart.Ville}}</p>
+                <p>{{appart.Ville}}</p>
+                <p>{{appart.Ville}}</p>
+                <p>{{appart.Ville}}</p>
+                <p>{{appart.Ville}}</p> #}
+                
+
+
+
+
+			</div>
+
+			<div class="card-body">
+				<a class="btn btn-outline-primary" href="#">Ajouter au panier</a>
+
+				<a class="btn btn-outline-info" href="#">Nouveau produit</a>
+				<a class="btn btn-outline-warning" href="#">Modifier</a>
+				<a class="btn btn-outline-danger" href="#">Supprimer</a>
+
+			</div>
+		</div>
+
+	{% endfor %}
+
+{% endblock %}

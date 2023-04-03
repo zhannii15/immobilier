@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChargesController!{% endblock %}
+
+{% block body %}
+    {% if allCharge is not empty  %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Loyer mensuel</th>
+                <th scope="col">Garantie loyer</th>
+                <th scope="col">previsions charges</th>
+                <th scope="col">etats des lieux</th>
+                <th scope="col" class="text-center" colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for charge in allCharge %}
+            
+                <tr class="table-active">
+                    <th scope="row">{{charge.id}}</th>
+                    <td>{{charge.LoyerMensuel}}</td>
+                    <td>{{charge.GarantieLoyer}}</td>
+                    <th scope="row">{{charge.ProvisionCharge}}</th>
+                    <th scope="row">{{charge.EtatDesLieux}}</th>
+                    <th scope="row">{{charge.Appartement.id}}</th>
+                    <td>
+                        <a class="btn btn-outline-warning"href="{{path('charge_modifier',{id:charge.id})}}">Modifier</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-danger"href="#">Supprimer</a> 
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <a class="btn btn-outline-primary"href="{{path('home')}}">Retour accueil</a> <a class="btn btn-outline-info"href="{{path('charge_create')}}">Nouvelle charge</a>
+{% endblock %}

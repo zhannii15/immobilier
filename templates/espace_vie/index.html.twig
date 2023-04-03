@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace vie{% endblock %}
+
+{% block body %}
+{% if allEspaceVie is not empty  %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Parking</th>
+                <th scope="col">Salle d'eau</th>
+                <th scope="col">Salle de bain</th>
+                <th scope="col">Ascenseur</th>
+                <th scope="col">Colocation</th>
+                <th scope="col" class="text-center" colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for espace in allEspaceVie %}
+            
+                <tr class="table-active">
+                    <td>{{espace.id}}</td>
+                    <td>{{espace.parking}}</td>
+                    <td>{{espace.sde}}</td>
+                    <td>{{espace.sdb}}</td>
+                    <td>{{espace.ascenseur}}</td>
+                    <td>{{espace.coloc}}</td>
+                    <td>{{espace.appartement.type}}</td>
+                    <td>
+                        <a class="btn btn-outline-warning"href="{{path('espace_modifier',{id:espace.id})}}">Modifier</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-danger"href="#">Supprimer</a> 
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <a class="btn btn-outline-primary"href="{{path('home')}}">Retour accueil</a>  <a class="btn btn-outline-info"href="{{path('espace_create')}}">Nouvel espace vie</a>
+{% endblock %}

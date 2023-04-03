@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Surface Piéce{% endblock %}
+
+{% block body %}
+    {% if allSurface is not empty  %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">M2 par piece</th>
+                <th scope="col">Bien</th>
+                <th scope="col" class="text-center" colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for surface in allSurface %}
+            
+                <tr class="table-active">
+                    <th scope="row">{{surface.id}}</th>
+                    <td>{{surface.Nom}}</td>
+                    <td>{{surface.M2ParPiece}}</td>
+                    <td> #{{surface.Appartement.Id}} {{surface.Appartement.Type }}  </td>
+                    <td>
+                        <a class="btn btn-outline-warning"href="{{path('surface_modifier',{id:surface.id})}}">Modifier</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-danger"href="#">Supprimer</a> 
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <a class="btn btn-outline-primary"href="{{path('home')}}">Retour accueil</a> <a class="btn btn-outline-info"href="{{path('surface_create')}}">Nouvelle surface</a>
+
+{% endblock %}
